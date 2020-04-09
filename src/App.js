@@ -1,26 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Week from "./components/style/week/Week";
+import ContainerCalendar from "./components/style/ContainerCalendar";
+import ContainerWeek from "./components/style/week/ContainerWeek";
+import ContainerDateInWeek from "./components/style/date/ContainerDateInWeek";
+import BodyDate from "./components/style/BodyDate";
+import Date from "./components/style/date/Date";
+import ContentDate from "./components/style/date/ContentDate";
+import ShortDate from "./components/style/date/ShortDate";
+import moment from 'moment';
+import RenderDates from "./components/RenderDates";
+
+const renderWeek = () => {
+  let weeks = [];
+  for(let i = 1; i <= 53; i++) {
+    weeks.push(
+        <Week>
+          <span>week {i}</span>
+        </Week>
+    )
+  }
+  return weeks;
+};
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    console.log(moment.weekdaysShort()[0]);
+    return (
+        <ContainerCalendar>
+            <BodyDate>
+                <ContainerWeek>
+                  {renderWeek()}
+                </ContainerWeek>
+                <ContainerDateInWeek>
+                    {RenderDates()}
+                </ContainerDateInWeek>
+            </BodyDate>
+        </ContainerCalendar>
+    );
 }
 
 export default App;
