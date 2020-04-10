@@ -9,10 +9,12 @@ export default function RenderDates(props) {
 
     const dates_ = [];
     const startDate = moment('12-29-2019', 'MM-DD-YYYY');
-
+    const today = moment();
+    // display date in week
     for(let i = 1; i <= 53*7; i++) {
+        const isToday = startDate.isSame(today, "date");
         dates_.push(
-            <Date>
+            <Date key={i} id={`${isToday ? "date-today": null}`}>
                 <ContentDate>
                     <ShortDate>{moment.weekdaysShort()[i%7]}</ShortDate>
                     <span>{startDate.add(1,'days').get('Date')}</span>
