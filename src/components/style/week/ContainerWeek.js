@@ -4,6 +4,6 @@ const ContainerWeek = styled.div`
   display: grid;
   justify-content: flex-start;
   align-items: flex-start;
-  grid-template-columns: repeat(53, 602px);
+  grid-template-columns: repeat(4, 602px);
 `;
 export default ContainerWeek;

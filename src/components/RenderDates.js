@@ -5,13 +5,12 @@ import ShortDate from "./style/date/ShortDate";
 import moment from 'moment';
 
 // the function display dates
-export default function RenderDates(props) {
+export default function RenderDates(startDate) {
 
     const dates_ = [];
-    const startDate = moment('12-29-2019', 'MM-DD-YYYY');
     const today = moment();
     // display date in week
-    for(let i = 1; i <= 53*7; i++) {
+    for(let i = 1; i <= 4*7; i++) {
         const isToday = startDate.isSame(today, "date");
         dates_.push(
             <Date key={i} id={`${isToday ? "date-today": null}`}>
