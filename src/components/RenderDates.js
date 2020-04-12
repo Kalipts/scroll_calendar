@@ -8,12 +8,14 @@ import moment from 'moment';
 export default function RenderDates(startDate) {
 
     const dates_ = [];
-    const today = moment();
     // display date in week
+
+    let fixDate = parseInt(startDate.format('d'));
+    if(fixDate === 0) fixDate = 7;
+    startDate.add(-fixDate, 'days');
     for(let i = 1; i <= 4*7; i++) {
-        const isToday = startDate.isSame(today, "date");
         dates_.push(
-            <Date key={i} id={`${isToday ? "date-today": null}`}>
+            <Date key={i}>
                 <ContentDate>
                     <ShortDate>{moment.weekdaysShort()[i%7]}</ShortDate>
                     <span>{startDate.add(1,'days').get('Date')}</span>
